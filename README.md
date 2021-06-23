@@ -36,12 +36,12 @@ Open `api/schemes/scheme-router.js` and study the specification for each endpoin
 - `[POST] /api/schemes/:scheme_id/steps`
 
 ### Middleware Functions
-[]
+
 Write middleware functions in `api/schemes/scheme-middleware.js` following the instructions inside that file:
 
 - [X] `checkSchemeId`
-- [ ] `validateScheme`
-- [ ] `validateStep`
+- [X] `validateScheme`
+- [X] `validateStep`
 
 ### Database Functions
 

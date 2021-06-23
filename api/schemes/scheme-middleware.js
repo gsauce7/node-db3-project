@@ -7,21 +7,25 @@ const Scheme = require("./scheme-model");
     "message": "scheme with scheme_id <actual id> not found"
   }
 */
+
 const checkSchemeId = async (req, res, next) => {
+
   try {
-    const { id } = req.params;
-    const scheme = await Scheme.findById(id);
+    const scheme = await Scheme.findById(req.params.scheme_id)
+
     if (!scheme) {
-      res.status(404).json({ message: `scheme with scheme_id ${id} not found` });
+      return res.status(404).json({
+        message: `scheme with scheme_id ${req.params.scheme_id} not found`
+      })
     } else {
-      req.scheme = scheme;
-      next();
+      req.scheme = scheme
+      next()
     }
   } catch (err) {
-    next(err);
+    next(err)
   }
-
 }
+
 
 /*
   If `scheme_name` is missing, empty string or not a string:
@@ -32,12 +36,18 @@ const checkSchemeId = async (req, res, next) => {
   }
 */
 const validateScheme = (req, res, next) => {
-  const { scheme } = req.body;
-  if (scheme.scheme_name.isNull()) {
-    res.status(400).json({ message: `invalid scheme_name` });
-  } next()
+  try {
+    if (!req.body.scheme_name || req.body.scheme_name === "" || typeof req.body.scheme_name !== "string") {
+      res.status(400).json({
+        message: "invalid scheme_name"
+      })
+    } else {
+      next()
+    }
+  } catch (err) {
+    next(err)
+  }
 };
-
 
 
 /*
@@ -49,12 +59,26 @@ const validateScheme = (req, res, next) => {
     "message": "invalid step"
   }
 */
+
+
 const validateStep = (req, res, next) => {
-  const { instructions, step_number } = req.body;
-  if ((instructions === undefined) || (typeof step_number === NaN || step_number < 1)) {
-    res.status(400).json({ message: `invalid step` });
-  } next();
-};
+
+  try {
+    if (!req.body.instructions
+      || req.body.instructions === ""
+      || typeof req.body.instructions !== "string"
+      || typeof req.body.step_number !== "number"
+      || req.body.step_number < 1) {
+      res.status(400).json({
+        message: "invalid step"
+      })
+    } else {
+      next()
+    }
+  } catch (err) {
+    next(err)
+  }
+}
 
 module.exports = {
   checkSchemeId,
