@@ -47,11 +47,11 @@ Write middleware functions in `api/schemes/scheme-middleware.js` following the i
 
 Write db access functions in `api/schemes/scheme-model.js` following the instructions inside that file:
 
-- [ ] `find`
-- [ ] `findById`
-- [ ] `findSteps`
-- [ ] `add`
-- [ ] `addStep`
+- [X] `find`
+- [X] `findById`
+- [X] `findSteps`
+- [X] `add`
+- [X] `addStep`
 
 #### Schemes Schema
 
@@ -79,7 +79,7 @@ Write db access functions in `api/schemes/scheme-model.js` following the instruc
 - Perform basic professional polishing including spell-checking and grammar-checking on your work.
 
 ## Task 3: Multi Table Queries
-
+[X]
 Use a graphical tool like SQLite Studio to open `./data/northwind.db3` and execute the following queries:
 
 (Write the queries inside `./queries.sql` under the corresponding comment)
