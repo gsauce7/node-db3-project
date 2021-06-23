@@ -10,20 +10,25 @@ const Scheme = require("./scheme-model");
 
 const checkSchemeId = async (req, res, next) => {
 
-  try {
-    const scheme = await Scheme.findById(req.params.scheme_id)
+  // try {
+  //   const scheme = await Scheme.findById(req.params.scheme_id)
 
-    if (!scheme) {
-      return res.status(404).json({
-        message: `scheme with scheme_id ${req.params.scheme_id} not found`
-      })
-    } else {
-      req.scheme = scheme
-      next()
-    }
-  } catch (err) {
-    next(err)
+  //   if (!scheme) {
+  //     return res.status(404).json({
+  //       message: `scheme with scheme_id ${req.params.scheme_id} not found`
+  //     })
+  //   } else {
+  //     req.scheme = scheme
+  //     next()
+  //   }
+  // } catch (err) {
+  //   next(err)
+  // }
+  const exists = await Scheme.findById(req.params.scheme_id)
+  if (!exists || Object.keys(exists).length === 0) {
+    return res.status(404).json({ message: `scheme with scheme_id ${req.params.scheme_id} not found` })
   }
+  next()
 }
 
 
@@ -36,17 +41,22 @@ const checkSchemeId = async (req, res, next) => {
   }
 */
 const validateScheme = (req, res, next) => {
-  try {
-    if (!req.body.scheme_name || req.body.scheme_name === "" || typeof req.body.scheme_name !== "string") {
-      res.status(400).json({
-        message: "invalid scheme_name"
-      })
-    } else {
-      next()
-    }
-  } catch (err) {
-    next(err)
+  // try {
+  //   if (!req.body.scheme_name || req.body.scheme_name === "" || typeof req.body.scheme_name !== "string") {
+  //     res.status(400).json({
+  //       message: "invalid scheme_name"
+  //     })
+  //   } else {
+  //     next()
+  //   }
+  // } catch (err) {
+  //   next(err)
+  // }
+  if (!req.body.scheme_name || typeof req.body.scheme_name !== "string") {
+    return res.status(400).json({ message: "invalid scheme_name" })
   }
+  next()
+
 };
 
 
@@ -63,21 +73,10 @@ const validateScheme = (req, res, next) => {
 
 const validateStep = (req, res, next) => {
 
-  try {
-    if (!req.body.instructions
-      || req.body.instructions === ""
-      || typeof req.body.instructions !== "string"
-      || typeof req.body.step_number !== "number"
-      || req.body.step_number < 1) {
-      res.status(400).json({
-        message: "invalid step"
-      })
-    } else {
-      next()
-    }
-  } catch (err) {
-    next(err)
+  if (!req.body.instructions || req.body.instructions == "" || !req.body.step_number || typeof req.body.step_number !== "number" || req.body.step_number < 1) {
+    return res.status(400).json({ message: "invalid step" })
   }
+  next()
 }
 
 module.exports = {
