@@ -6,7 +6,7 @@ There are two possible ways to submit your project. Your instructor should have 
 
 ### Option A - Codegrade
 
-- [ ] Fork and clone the repository.
+- [NA - only for Sprint Challenges] Fork and clone the repository.
 - [ ] Open the assignment in Canvas and click on the "Set up git" option.
 - [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
 - [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
@@ -14,19 +14,19 @@ There are two possible ways to submit your project. Your instructor should have 
 
 ### Option B - Pull Request
 
-- [ ] Fork and clone the repository.
-- [ ] Implement your project in a `firstname-lastname` branch.
-- [ ] Create a pull request of `firstname-lastname` against your `main` branch.
-- [ ] Open the assignment in Canvas and submit your pull request.
+- [X] Fork and clone the repository.
+- [X] Implement your project in a `firstname-lastname` branch.
+- [X] Create a pull request of `firstname-lastname` against your `main` branch.
+- [X] Open the assignment in Canvas and submit your pull request.
 
 ## Task 2: Project Minimum Viable Product
 
 ### Database
 
-Open `data/schemes.db3` using a graphical tool like SQLite Studio and study the data inside the `schemes` and `steps` tables. The data can be reset at any time by executing `npm run seed`.
+[X]Open `data/schemes.db3` using a graphical tool like SQLite Studio and study the data inside the `schemes` and `steps` tables. The data can be reset at any time by executing `npm run seed`.
 
 ### API
-
+[X]
 Open `api/schemes/scheme-router.js` and study the specification for each endpoint. You do not need to make any changes to this file.
 
 - `[GET] /api/schemes`
@@ -39,19 +39,19 @@ Open `api/schemes/scheme-router.js` and study the specification for each endpoin
 
 Write middleware functions in `api/schemes/scheme-middleware.js` following the instructions inside that file:
 
-- [ ] `checkSchemeId`
-- [ ] `validateScheme`
-- [ ] `validateStep`
+- [X] `checkSchemeId`
+- [X] `validateScheme`
+- [X] `validateStep`
 
 ### Database Functions
 
 Write db access functions in `api/schemes/scheme-model.js` following the instructions inside that file:
 
-- [ ] `find`
-- [ ] `findById`
-- [ ] `findSteps`
-- [ ] `add`
-- [ ] `addStep`
+- [X] `find`
+- [X] `findById`
+- [X] `findSteps`
+- [X] `add`
+- [X] `addStep`
 
 #### Schemes Schema
 
@@ -79,7 +79,7 @@ Write db access functions in `api/schemes/scheme-model.js` following the instruc
 - Perform basic professional polishing including spell-checking and grammar-checking on your work.
 
 ## Task 3: Multi Table Queries
-
+[X]
 Use a graphical tool like SQLite Studio to open `./data/northwind.db3` and execute the following queries:
 
 (Write the queries inside `./queries.sql` under the corresponding comment)
